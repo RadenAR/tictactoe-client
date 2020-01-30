@@ -18,7 +18,7 @@ const onSignUpFailure = response => {
 }
 
 const onSignInSuccess = response => {
-  $('#message').text(`${response.user.email} successfully signed in`)
+  $('#message').text(`${response.user.email} successfully signed in! Press 'New Game' to start a game`)
   $('#sign-in').trigger('reset')
   store.user = response.user
 

@@ -10,8 +10,7 @@ const authEvents = require('./auth/events')
 // require('./example')
 
 $(() => {
-  $('.spaces').on('click', gameEvents.addContent)
-
+  // Auth stuff
   $('#sign-up').on('submit', authEvents.onSignUp)
   $('#sign-in').on('submit', authEvents.onSignIn)
   $('#change-pw').on('submit', authEvents.onChangePw)
@@ -19,4 +18,5 @@ $(() => {
 
   // game stuff
   $('#new-game').on('click', gameEvents.createGame)
+  $('.spaces').on('click', gameEvents.addContent)
 })
