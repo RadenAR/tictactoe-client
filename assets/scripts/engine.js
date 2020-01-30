@@ -1,6 +1,0 @@
-const board = ['', '', '', '', '', '', '', '', '']
-
-
-
-module.exports = {
-}

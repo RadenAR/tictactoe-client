@@ -1,5 +1,3 @@
-const engine = require('./engine')
-
 let player = 0
 
 const addContent = (event) => {
