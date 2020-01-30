@@ -23,3 +23,13 @@ body {
   background-color: $alt-color;
 }
 // up until here
+
+.success {
+  background-color: limegreen;
+  color: white;
+}
+
+.failure {
+  background-color: red;
+  color: white;
+}
