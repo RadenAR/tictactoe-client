@@ -18,7 +18,8 @@ const onSignUpFailure = response => {
 }
 
 const onSignInSuccess = response => {
-  $('#message').text(`${response.user.email} successfully signed in! Press 'New Game' to start a game`)
+  $('#message').text(`${response.user.email} successfully signed in!`)
+  $('#message2').text(`Press 'New Game' to start a game`)
   $('#sign-in').trigger('reset')
   store.user = response.user
 
@@ -56,6 +57,7 @@ const onSignOutSuccess = () => {
 
   $('#message').removeClass('failure')
   $('#message').addClass('success')
+  $('#message2').text('')
 }
 
 const onSignOutFailure = () => {

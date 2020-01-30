@@ -19,7 +19,6 @@ const addContent = event => {
 
 const createGame = event => {
   event.preventDefault()
-  $('#message').text('')
   player = 0
   api.newGame()
     .then(ui.onNewGameSuccess)

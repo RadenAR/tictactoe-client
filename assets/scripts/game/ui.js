@@ -1,6 +1,7 @@
 'use strict'
 
 const store = require('../store')
+const gameEvent = require('./events')
 
 const updateBoard = () => {
   const board = store.game.cells
@@ -18,16 +19,16 @@ const checkForWin = () => {
       (board[0] === board[3] && board[0] === board[6])) && board[0] !== '') {
     store.game.over = true
     console.log(store)
-    $('#message').text('Game Over')
+    $('#message2').text('Game Over')
   } else if (((board[1] === board[4] && board[1] === board[7]) ||
       (board[2] === board[4] && board[2] === board[6]) ||
       (board[3] === board[4] && board[3] === board[5])) && board[4] !== '') {
     store.game.over = true
-    $('#message').text('Game Over')
+    $('#message2').text('Game Over')
   } else if (((board[2] === board[5] && board[2] === board[8]) ||
       (board[6] === board[7] && board[6] === board[8])) && board[8] !== '') {
     store.game.over = true
-    $('#message').text('Game Over')
+    $('#message2').text('Game Over')
   }
 }
 
@@ -35,6 +36,8 @@ const onNewGameSuccess = response => {
   store.game = response.game
   updateBoard()
   checkForWin()
+  $('#message').text('')
+  $('#message2').text('X\'s Turn')
 }
 
 const onNewGameFailure = response => {
@@ -48,6 +51,20 @@ const onUpdateGameSuccess = response => {
   store.game = response.game
   checkForWin()
   updateBoard()
+  let numberOfX = 0
+  let numberOfO = 0
+  for (let i = 0; i < store.game.cells.length; i++) {
+    if (store.game.cells[i] === 'x') {
+      numberOfX++
+    } else if (store.game.cells[i] === 'o') {
+      numberOfO++
+    }
+  }
+  if (numberOfX - numberOfO !== 0 && store.game.over === false) {
+    $('#message2').text(`O's Turn`)
+  } else if (store.game.over === false) {
+    $('#message2').text(`X's Turn`)
+  }
 }
 
 const onUpdateGameFailure = response => {
