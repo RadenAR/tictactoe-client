@@ -19,7 +19,7 @@ const updateGame = event => {
         'index': $(event.target).data('num'),
         'value': $(event.target).text()
       },
-      'over': false
+      'over': store.game.over
     }
   }
   return $.ajax({

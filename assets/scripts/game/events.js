@@ -1,13 +1,14 @@
 const ui = require('./ui')
 const api = require('./api')
+const store = require('../store')
 
 let player = 0
 
 const addContent = event => {
-  if ($(event.target).text() === '' && player % 2 === 0) {
+  if ($(event.target).text() === '' && player % 2 === 0 && store.game.over === false) {
     $(event.target).text('x')
     player = 1
-  } else if ($(event.target).text() === '' && player % 2 !== 0) {
+  } else if ($(event.target).text() === '' && player % 2 !== 0 && store.game.over === false) {
     $(event.target).text('o')
     player = 0
   }
@@ -18,6 +19,8 @@ const addContent = event => {
 
 const createGame = event => {
   event.preventDefault()
+  $('#message').text('')
+  player = 0
   api.newGame()
     .then(ui.onNewGameSuccess)
     .catch(ui.onNewGameFailure)
