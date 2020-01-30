@@ -1,0 +1,6 @@
+const board = ['', '', '', '', '', '', '', '', '']
+
+
+
+module.exports = {
+}
