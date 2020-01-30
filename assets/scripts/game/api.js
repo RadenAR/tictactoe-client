@@ -12,6 +12,27 @@ const newGame = () => {
   })
 }
 
+const updateGame = event => {
+  const updateObj = {
+    'game': {
+      'cell': {
+        'index': $(event.target).data('num'),
+        'value': $(event.target).text()
+      },
+      'over': false
+    }
+  }
+  return $.ajax({
+    url: config.apiUrl + '/games/' + store.game.id,
+    method: 'PATCH',
+    headers: {
+      Authorization: `Token token=${store.user.token}`
+    },
+    data: updateObj
+  })
+}
+
 module.exports = {
-  newGame
+  newGame,
+  updateGame
 }
