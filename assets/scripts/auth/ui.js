@@ -33,8 +33,8 @@ const onSignInSuccess = response => {
   $('#message').removeClass('failure')
   $('#message').addClass('success')
 
-  gameApi.numberOfGames()
-    .then(onNumberOfGamesSuccess)
+  gameApi.numberOfGames(true)
+    .then(onNumberGameSuccess)
   $('#game-table').show()
 }
 
@@ -82,8 +82,8 @@ const onSignOutFailure = () => {
   $('#message').addClass('failure')
 }
 
-const onNumberOfGamesSuccess = response => {
-  $('#games').text(response.games.length)
+const onNumberGameSuccess = response => {
+  $('#game').text(response.games.length)
 }
 
 module.exports = {
@@ -94,6 +94,5 @@ module.exports = {
   onChangeSuccess,
   onChangeFailure,
   onSignOutSuccess,
-  onSignOutFailure,
-  onNumberOfGamesSuccess
+  onSignOutFailure
 }

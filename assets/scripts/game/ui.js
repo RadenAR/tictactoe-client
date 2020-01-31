@@ -47,6 +47,9 @@ const onNewGameSuccess = response => {
   checkForWin()
   $('#message').text('')
   $('#message2').text('X\'s Turn')
+
+  api.numberOfGames(true)
+    .then(onNumberGameSuccess)
 }
 
 const onNewGameFailure = response => {
@@ -83,6 +86,10 @@ const onUpdateGameFailure = response => {
 
   $('#message').removeClass('success')
   $('#message').addClass('failure')
+}
+
+const onNumberGameSuccess = response => {
+  $('#game').text(response.games.length)
 }
 
 module.exports = {
