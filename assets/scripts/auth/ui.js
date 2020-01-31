@@ -40,8 +40,7 @@ const onSignInSuccess = response => {
   $('#change-pw').show()
   $('#sign-out').show()
 
-  $('#sign-in').hide()
-  $('#sign-up').hide()
+  $('#myModal').modal('hide')
 }
 
 const onSignInFailure = response => {
@@ -83,8 +82,7 @@ const onSignOutSuccess = () => {
   $('#change-pw').hide()
   $('#sign-out').hide()
 
-  $('#sign-in').show()
-  $('#sign-up').show()
+  $('#myModal').modal('show')
 }
 
 const onSignOutFailure = () => {
