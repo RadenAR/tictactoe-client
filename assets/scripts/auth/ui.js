@@ -1,6 +1,13 @@
 'use strict'
 
 const store = require('../store')
+const gameApi = require('../game/api')
+
+const clearBoard = () => {
+  for (let i = 0; i < 9; i++) {
+    $(`#space${i}`).text(' ')
+  }
+}
 
 const onSignUpSuccess = response => {
   $('#message').text(`${response.user.email} successfully signed up`)
@@ -25,6 +32,10 @@ const onSignInSuccess = response => {
 
   $('#message').removeClass('failure')
   $('#message').addClass('success')
+
+  gameApi.numberOfGames(true)
+    .then(onNumberGameSuccess)
+  $('#game-table').show()
 }
 
 const onSignInFailure = response => {
@@ -58,6 +69,10 @@ const onSignOutSuccess = () => {
   $('#message').removeClass('failure')
   $('#message').addClass('success')
   $('#message2').text('')
+
+  $('#game-table').hide()
+
+  clearBoard()
 }
 
 const onSignOutFailure = () => {
@@ -67,12 +82,8 @@ const onSignOutFailure = () => {
   $('#message').addClass('failure')
 }
 
-const onFinishedGamesSuccess = response => {
-  $('#finished').text(response.games.length)
-}
-
-const onUnfinishedGamesSuccess = response => {
-  $('#unfinished').text(response.games.length)
+const onNumberGameSuccess = response => {
+  $('#game').text(response.games.length)
 }
 
 module.exports = {
@@ -83,7 +94,5 @@ module.exports = {
   onChangeSuccess,
   onChangeFailure,
   onSignOutSuccess,
-  onSignOutFailure,
-  onFinishedGamesSuccess,
-  onUnfinishedGamesSuccess
+  onSignOutFailure
 }
