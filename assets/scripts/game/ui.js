@@ -27,6 +27,10 @@ const checkForWin = () => {
       (board[6] === board[7] && board[6] === board[8])) && board[8] !== '') {
     store.game.over = true
     $('#message2').text(`Game Over, ${board[8]} wins!`)
+  } else if (board[0] !== '' && board[1] !== '' && board[2] !== '' &&
+              board[3] !== '' && board[4] !== '' && board[5] !== '' &&
+              board[6] !== '' && board[7] !== '' && board[8] !== '') {
+    store.game.over = true
   }
 }
 
@@ -62,6 +66,8 @@ const onUpdateGameSuccess = response => {
     $('#message2').text(`O's Turn`)
   } else if (store.game.over === false) {
     $('#message2').text(`X's Turn`)
+  } else {
+    $('#message2').text('Game Over, Tie')
   }
 }
 
