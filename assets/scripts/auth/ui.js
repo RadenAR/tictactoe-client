@@ -3,6 +3,12 @@
 const store = require('../store')
 const gameApi = require('../game/api')
 
+const clearBoard = () => {
+  for (let i = 0; i < 9; i++) {
+    $(`#space${i}`).text(' ')
+  }
+}
+
 const onSignUpSuccess = response => {
   $('#message').text(`${response.user.email} successfully signed up`)
   $('#sign-up').trigger('reset')
@@ -65,6 +71,8 @@ const onSignOutSuccess = () => {
   $('#message2').text('')
 
   $('#game-table').hide()
+
+  clearBoard()
 }
 
 const onSignOutFailure = () => {
