@@ -1,6 +1,7 @@
 'use strict'
 
 const store = require('../store')
+const gameApi = require('../game/api')
 
 const onSignUpSuccess = response => {
   $('#message').text(`${response.user.email} successfully signed up`)
@@ -25,6 +26,12 @@ const onSignInSuccess = response => {
 
   $('#message').removeClass('failure')
   $('#message').addClass('success')
+
+  gameApi.numberOfGames(true)
+    .then(onFinishedGamesSuccess)
+
+  gameApi.numberOfGames(false)
+    .then(onUnfinishedGamesSuccess)
 }
 
 const onSignInFailure = response => {
