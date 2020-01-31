@@ -23,4 +23,6 @@ $(() => {
   $('#game-table').hide()
   $('#change-pw').hide()
   $('#sign-out').hide()
+
+  $('#message2').text('Sign In to Play')
 })
