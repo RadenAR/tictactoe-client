@@ -35,7 +35,6 @@ const checkForWin = () => {
               board[3] !== '' && board[4] !== '' && board[5] !== '' &&
               board[6] !== '' && board[7] !== '' && board[8] !== '') {
     store.game.over = true
-    console.log(store)
     $('#message2').text('Game Over, Tie')
     api.endGameUpdate()
   }

@@ -15,7 +15,7 @@ body {
   border: 1px solid $white;
   color: $font-color;
   display: flex;
-  height: 80px;
+  height: 200px;
   justify-content: center;
 }
 
@@ -31,5 +31,15 @@ body {
 
 .failure {
   background-color: red;
+  color: white;
+}
+
+.spaces {
+  font-size: 200px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+#new-game {
   color: white;
 }
