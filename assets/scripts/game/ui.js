@@ -1,7 +1,6 @@
 'use strict'
 
 const store = require('../store')
-const gameEvent = require('./events')
 
 const updateBoard = () => {
   const board = store.game.cells
