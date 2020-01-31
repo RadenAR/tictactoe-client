@@ -20,6 +20,12 @@ const onSignIn = event => {
   api.signIn(data)
     .then(ui.onSignInSuccess)
     .catch(ui.onSignInFailure)
+
+  $('#change-pw').show()
+  $('#sign-out').show()
+
+  $('#sign-in').hide()
+  $('#sign-up').hide()
 }
 
 const onChangePw = event => {
@@ -38,6 +44,12 @@ const onSignOut = event => {
   api.signOut()
     .then(ui.onSignOutSuccess)
     .catch(ui.onSignOutFailure)
+
+    $('#change-pw').hide()
+    $('#sign-out').hide()
+
+    $('#sign-in').show()
+    $('#sign-up').show()
 }
 
 module.exports = {
