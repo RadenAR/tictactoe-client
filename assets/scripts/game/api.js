@@ -32,7 +32,18 @@ const updateGame = event => {
   })
 }
 
+const numberOfGames = (status) => {
+  return $.ajax({
+    url: config.apiUrl + '/games?over=' + status,
+    method: 'GET',
+    headers: {
+      Authorization: `Token token=${store.user.token}`
+    }
+  })
+}
+
 module.exports = {
   newGame,
-  updateGame
+  updateGame,
+  numberOfGames
 }
