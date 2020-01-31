@@ -27,11 +27,9 @@ const onSignInSuccess = response => {
   $('#message').removeClass('failure')
   $('#message').addClass('success')
 
-  gameApi.numberOfGames(true)
-    .then(onFinishedGamesSuccess)
-
-  gameApi.numberOfGames(false)
-    .then(onUnfinishedGamesSuccess)
+  gameApi.numberOfGames()
+    .then(onNumberOfGamesSuccess)
+  $('#game-table').show()
 }
 
 const onSignInFailure = response => {
@@ -65,6 +63,8 @@ const onSignOutSuccess = () => {
   $('#message').removeClass('failure')
   $('#message').addClass('success')
   $('#message2').text('')
+
+  $('#game-table').hide()
 }
 
 const onSignOutFailure = () => {
@@ -74,12 +74,8 @@ const onSignOutFailure = () => {
   $('#message').addClass('failure')
 }
 
-const onFinishedGamesSuccess = response => {
-  $('#finished').text(response.games.length)
-}
-
-const onUnfinishedGamesSuccess = response => {
-  $('#unfinished').text(response.games.length)
+const onNumberOfGamesSuccess = response => {
+  $('#games').text(response.games.length)
 }
 
 module.exports = {
@@ -91,6 +87,5 @@ module.exports = {
   onChangeFailure,
   onSignOutSuccess,
   onSignOutFailure,
-  onFinishedGamesSuccess,
-  onUnfinishedGamesSuccess
+  onNumberOfGamesSuccess
 }

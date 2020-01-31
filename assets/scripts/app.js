@@ -19,4 +19,6 @@ $(() => {
   // game stuff
   $('#new-game').on('click', gameEvents.createGame)
   $('.spaces').on('click', gameEvents.addContent)
+
+  $('#game-table').hide()
 })

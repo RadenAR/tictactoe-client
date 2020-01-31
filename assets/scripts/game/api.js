@@ -32,9 +32,9 @@ const updateGame = event => {
   })
 }
 
-const numberOfGames = (status) => {
+const numberOfGames = () => {
   return $.ajax({
-    url: config.apiUrl + '/games?over=' + status,
+    url: config.apiUrl + '/games',
     method: 'GET',
     headers: {
       Authorization: `Token token=${store.user.token}`
