@@ -67,6 +67,14 @@ const onSignOutFailure = () => {
   $('#message').addClass('failure')
 }
 
+const onFinishedGamesSuccess = response => {
+  $('#finished').text(response.games.length)
+}
+
+const onUnfinishedGamesSuccess = response => {
+  $('#unfinished').text(response.games.length)
+}
+
 module.exports = {
   onSignUpSuccess,
   onSignUpFailure,
@@ -75,5 +83,7 @@ module.exports = {
   onChangeSuccess,
   onChangeFailure,
   onSignOutSuccess,
-  onSignOutFailure
+  onSignOutFailure,
+  onFinishedGamesSuccess,
+  onUnfinishedGamesSuccess
 }

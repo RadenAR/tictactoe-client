@@ -17,17 +17,16 @@ const checkForWin = () => {
       (board[0] === board[4] && board[4] === board[8]) ||
       (board[0] === board[3] && board[0] === board[6])) && board[0] !== '') {
     store.game.over = true
-    console.log(store)
-    $('#message2').text('Game Over')
+    $('#message2').text(`Game Over, ${board[0]} wins!`)
   } else if (((board[1] === board[4] && board[1] === board[7]) ||
       (board[2] === board[4] && board[2] === board[6]) ||
       (board[3] === board[4] && board[3] === board[5])) && board[4] !== '') {
     store.game.over = true
-    $('#message2').text('Game Over')
+    $('#message2').text(`Game Over, ${board[4]} wins!`)
   } else if (((board[2] === board[5] && board[2] === board[8]) ||
       (board[6] === board[7] && board[6] === board[8])) && board[8] !== '') {
     store.game.over = true
-    $('#message2').text('Game Over')
+    $('#message2').text(`Game Over, ${board[8]} wins!`)
   }
 }
 
