@@ -4,6 +4,7 @@
 $alt-color: $cyan;
 $body-bg-color: $gray-200;
 $font-color: $light;
+$limegreen: #32cd32;
 
 body {
   background-color: $body-bg-color;
@@ -25,21 +26,20 @@ body {
 // up until here
 
 .success {
-  background-color: limegreen;
-  color: white;
+  background-color: $limegreen;
+  color: $white;
 }
 
 .failure {
-  background-color: red;
-  color: white;
+  background-color: $red;
+  color: $white;
 }
 
 .spaces {
   font-size: 200px;
-  text-align: center;
-  vertical-align: middle;
 }
 
-#new-game {
-  color: white;
+.new-game {
+  color: $white;
+  font-size: 25px;
 }
