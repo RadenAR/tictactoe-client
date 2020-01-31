@@ -21,4 +21,6 @@ $(() => {
   $('.spaces').on('click', gameEvents.addContent)
 
   $('#game-table').hide()
+  $('#change-pw').hide()
+  $('#sign-out').hide()
 })
