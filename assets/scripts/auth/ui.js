@@ -36,6 +36,12 @@ const onSignInSuccess = response => {
   gameApi.numberOfGames(true)
     .then(onNumberGameSuccess)
   $('#game-table').show()
+
+  $('#change-pw').show()
+  $('#sign-out').show()
+
+  $('#sign-in').hide()
+  $('#sign-up').hide()
 }
 
 const onSignInFailure = response => {
@@ -68,11 +74,17 @@ const onSignOutSuccess = () => {
 
   $('#message').removeClass('failure')
   $('#message').addClass('success')
-  $('#message2').text('')
+  $('#message2').text('Sign In to Play')
 
   $('#game-table').hide()
 
   clearBoard()
+
+  $('#change-pw').hide()
+  $('#sign-out').hide()
+
+  $('#sign-in').show()
+  $('#sign-up').show()
 }
 
 const onSignOutFailure = () => {
