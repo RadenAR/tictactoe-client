@@ -5,6 +5,7 @@
 
 const gameEvents = require('./game/events')
 const authEvents = require('./auth/events')
+const store = require('./store')
 
 // use require without a reference to ensure a file is bundled
 // require('./example')
@@ -26,4 +27,9 @@ $(() => {
 
   $('#message2').text('Sign In to Play')
   $('#myModal').modal('show')
+
+  // Multiplayer functionality
+  $('#multi').on('click', () => {
+    $('#key').text(store.game.id)
+  })
 })
