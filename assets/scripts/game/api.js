@@ -64,9 +64,21 @@ const endGameUpdate = () => {
   }
 }
 
+const joinGame = () => {
+  console.log($.ajax({
+    url: config.apiUrl + '/games/' + store.game.id,
+    method: 'PATCH',
+    headers: {
+      Authorization: `Token token=${store.user.token}`
+    },
+    data: ''
+  }))
+}
+
 module.exports = {
   newGame,
   updateGame,
   numberOfGames,
-  endGameUpdate
+  endGameUpdate,
+  joinGame
 }

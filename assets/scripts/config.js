@@ -2,7 +2,7 @@
 
 let apiUrl
 const apiUrls = {
-  development: 'https://tic-tac-toe-wdi-multiplayer.herokuapp.com/',
+  development: 'https://tic-tac-toe-wdi-multiplayer.herokuapp.com',
   production: 'https://tic-tac-toe-wdi-production.herokuapp.com'
 }
 

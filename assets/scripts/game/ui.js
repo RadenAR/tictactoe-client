@@ -47,6 +47,9 @@ const onNewGameSuccess = response => {
   $('#message').text('')
   $('#message2').text('X\'s Turn')
 
+  $('#multi').show()
+  $('#join-game').show()
+
   api.numberOfGames(true)
     .then(onNumberGameSuccess)
 }

@@ -1,6 +1,7 @@
 const ui = require('./ui')
 const api = require('./api')
 const store = require('../store')
+const getFormFields = require('../../../lib/get-form-fields')
 
 let player = 0
 
@@ -25,7 +26,19 @@ const createGame = event => {
     .catch(ui.onNewGameFailure)
 }
 
+const playExistingGame = event => {
+  event.preventDefault()
+
+  const form = event.target
+  const data = getFormFields(form)
+  store.game.id = data.game.id
+  api.joinGame()
+    // .then(ui.onJoinGameSuccess)
+    // .catch(ui.onJoinGameFailure)
+}
+
 module.exports = {
   createGame,
-  addContent
+  addContent,
+  playExistingGame
 }

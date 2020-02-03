@@ -29,7 +29,11 @@ $(() => {
   $('#myModal').modal('show')
 
   // Multiplayer functionality
+  $('#multi').hide()
+  $('#join-game').hide()
   $('#multi').on('click', () => {
     $('#key').text(store.game.id)
   })
+
+  $('#join-game').on('submit', gameEvents.playExistingGame)
 })
