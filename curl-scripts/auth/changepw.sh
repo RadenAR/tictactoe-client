@@ -1,4 +1,4 @@
-curl "https://tic-tac-toe-wdi.herokuapp.com/change-password" \
+curl "https://tic-tac-toe-wdi-multiplayer.herokuapp.com/change-password" \
   --include \
   --request PATCH \
   --header "Authorization: Token token=${TOKEN}" \
