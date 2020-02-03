@@ -50,8 +50,14 @@ const onNewGameSuccess = response => {
   $('#multi').show()
   $('#join-game').show()
 
+  $('#message').text('New Game Created Successfully')
+
+  $('#message').removeClass('failure')
+  $('#message').addClass('success')
+
   api.numberOfGames(true)
     .then(onNumberGameSuccess)
+    .catch(onNumberGameFailure)
 }
 
 const onNewGameFailure = response => {
@@ -94,9 +100,32 @@ const onNumberGameSuccess = response => {
   $('#game').text(response.games.length)
 }
 
+const onNumberGameFailure = response => {
+  $('#message').text('Failed to Update Number Of Games Played')
+
+  $('#message').removeClass('success')
+  $('#message').addClass('failure')
+}
+
+const onJoinGameSuccess = response => {
+  $('#message').text('Joining Game Successful')
+
+  $('#message').removeClass('failure')
+  $('#message').addClass('success')
+}
+
+const onJoinGameFailure = response => {
+  $('#message').text('Joining Game Failed')
+
+  $('#message').removeClass('success')
+  $('#message').addClass('failure')
+}
+
 module.exports = {
   onNewGameSuccess,
   onNewGameFailure,
   onUpdateGameSuccess,
-  onUpdateGameFailure
+  onUpdateGameFailure,
+  onJoinGameSuccess,
+  onJoinGameFailure
 }

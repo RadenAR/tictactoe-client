@@ -33,8 +33,8 @@ const playExistingGame = event => {
   const data = getFormFields(form)
   store.game.id = data.game.id
   api.joinGame()
-    // .then(ui.onJoinGameSuccess)
-    // .catch(ui.onJoinGameFailure)
+    .then(ui.onJoinGameSuccess)
+    .catch(ui.onJoinGameFailure)
 }
 
 module.exports = {
