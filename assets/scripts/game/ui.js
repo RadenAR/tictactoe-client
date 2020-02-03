@@ -108,6 +108,9 @@ const onNumberGameFailure = response => {
 }
 
 const onJoinGameSuccess = response => {
+  store.game = response.game
+  checkForWin()
+  updateBoard()
   $('#message').text('Joining Game Successful')
 
   $('#message').removeClass('failure')
