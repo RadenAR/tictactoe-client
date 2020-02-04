@@ -6,6 +6,7 @@
 const gameEvents = require('./game/events')
 const authEvents = require('./auth/events')
 const store = require('./store')
+const watch = require('./game/watcher')
 
 // use require without a reference to ensure a file is bundled
 // require('./example')
@@ -34,6 +35,7 @@ $(() => {
   $('#multi').on('click', () => {
     $('#key').text(store.game.id)
   })
+  $('#multi').on('click', watch.makeWatcher)
 
   $('#join-game').on('submit', gameEvents.playExistingGame)
 })

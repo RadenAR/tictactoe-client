@@ -2,6 +2,7 @@
 
 const store = require('../store')
 const api = require('./api')
+const watch = require('./watcher')
 
 const updateBoard = () => {
   const board = store.game.cells
@@ -115,6 +116,8 @@ const onJoinGameSuccess = response => {
 
   $('#message').removeClass('failure')
   $('#message').addClass('success')
+
+  $('#join-game').on('submit', watch.makeWatcher)
 }
 
 const onJoinGameFailure = response => {
