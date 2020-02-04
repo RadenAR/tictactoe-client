@@ -5,10 +5,10 @@ const store = require('../store')
 let player = 0
 
 const addContent = event => {
-  if ($(event.target).text() === '' && player % 2 === 0 && store.game.over === false) {
+  if ($(event.target).text() === '' && player === 0 && store.game.over === false) {
     $(event.target).text('x')
-    player = 1
-  } else if ($(event.target).text() === '' && player % 2 !== 0 && store.game.over === false) {
+    // player = 1
+  } else if ($(event.target).text() === '' && player !== 0 && store.game.over === false) {
     $(event.target).text('o')
     player = 0
   }
@@ -27,5 +27,6 @@ const createGame = event => {
 
 module.exports = {
   createGame,
-  addContent
+  addContent,
+  player: player
 }

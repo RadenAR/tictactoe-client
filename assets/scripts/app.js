@@ -26,4 +26,7 @@ $(() => {
 
   $('#message2').text('Sign In to Play')
   $('#myModal').modal('show')
+
+  // ai stuff
+  $('#ai-on').on('click', gameEvents.turnAi)
 })
