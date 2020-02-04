@@ -1,6 +1,5 @@
 @import '~bootstrap/scss/bootstrap';
 
-// change the following (directly from lesson)
 $alt-color: $cyan;
 $body-bg-color: $gray-200;
 $font-color: $light;
@@ -23,7 +22,6 @@ body {
 .alt-color {
   background-color: $alt-color;
 }
-// up until here
 
 .success {
   background-color: $limegreen;
