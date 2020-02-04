@@ -1,6 +1,7 @@
 'use strict'
 const gameEvents = require('./game/events')
 const authEvents = require('./auth/events')
+const gameUi = require('./game/ui')
 
 $(() => {
   $('#sign-up').on('submit', authEvents.onSignUp)
@@ -17,4 +18,8 @@ $(() => {
 
   $('#message2').text('Sign In to Play')
   $('#myModal').modal('show')
+
+  $('#ai-on').on('click', gameEvents.turnAi)
+  $('#ai-on').on('click', gameUi.changeAi)
+  $('#ai-controls').hide()
 })

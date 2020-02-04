@@ -32,6 +32,26 @@ const updateGame = event => {
   })
 }
 
+const updateGameAi = (space) => {
+  const updateObj = {
+    'game': {
+      'cell': {
+        'index': space,
+        'value': store.game.cells[space]
+      },
+      'over': store.game.over
+    }
+  }
+  return $.ajax({
+    url: config.apiUrl + '/games/' + store.game.id,
+    method: 'PATCH',
+    headers: {
+      Authorization: `Token token=${store.user.token}`
+    },
+    data: updateObj
+  })
+}
+
 const numberOfGames = (status) => {
   return $.ajax({
     url: config.apiUrl + '/games?over=' + status,
@@ -68,5 +88,6 @@ module.exports = {
   newGame,
   updateGame,
   numberOfGames,
-  endGameUpdate
+  endGameUpdate,
+  updateGameAi
 }

@@ -58,10 +58,40 @@ const onNewGameFailure = response => {
   $('#message').addClass('failure')
 }
 
+const ai = () => {
+  const space = Math.floor(Math.random() * 8)
+  if (store.game.cells[space] !== 'x' && store.game.cells[space] !== 'o') {
+    store.game.cells[space] = 'o'
+    updateBoard()
+  } else {
+    ai()
+  }
+  api.updateGameAi(space)
+    .then(() => {
+      let numberOfX = 0
+      let numberOfO = 0
+      for (let i = 0; i < store.game.cells.length; i++) {
+        if (store.game.cells[i] === 'x') {
+          numberOfX++
+        } else if (store.game.cells[i] === 'o') {
+          numberOfO++
+        }
+      }
+      if (numberOfX - numberOfO !== 0 && store.game.over === false) {
+        $('#message2').text(`O's Turn`)
+      } else if (store.game.over === false) {
+        $('#message2').text(`X's Turn`)
+      } else {
+        checkForWin()
+      }
+      checkForWin()
+    })
+}
+
 const onUpdateGameSuccess = response => {
   store.game = response.game
-  checkForWin()
   updateBoard()
+  checkForWin()
   let numberOfX = 0
   let numberOfO = 0
   for (let i = 0; i < store.game.cells.length; i++) {
@@ -78,6 +108,9 @@ const onUpdateGameSuccess = response => {
   } else {
     checkForWin()
   }
+  if (store.game.over === false && $('#ai-on').val() === 'true') {
+    ai()
+  }
 }
 
 const onUpdateGameFailure = response => {
@@ -91,9 +124,18 @@ const onNumberGameSuccess = response => {
   $('#game').text(response.games.length)
 }
 
+const changeAi = () => {
+  if ($('#ai-status').text() === 'AI Off' && $('#message2').text() === `X's Turn`) {
+    $('#ai-status').text('AI On')
+  } else {
+    $('#ai-status').text('AI Off')
+  }
+}
+
 module.exports = {
   onNewGameSuccess,
   onNewGameFailure,
   onUpdateGameSuccess,
-  onUpdateGameFailure
+  onUpdateGameFailure,
+  changeAi
 }
