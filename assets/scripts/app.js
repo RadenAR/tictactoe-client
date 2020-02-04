@@ -38,4 +38,5 @@ $(() => {
   $('#multi').on('click', watch.makeWatcher)
 
   $('#join-game').on('submit', gameEvents.playExistingGame)
+  $('#join-game').on('submit', watch.makeWatcher)
 })
