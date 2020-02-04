@@ -2,11 +2,12 @@
 const store = require('../store')
 const config = require('../config')
 const watcher = require('../../../public/resource-watcher-0.1.0.js')
+const ui = require('./ui')
 
 const makeWatcher = () => {
   const gameWatcher = watcher.resourceWatcher(config.apiUrl + '/games/' + store.game.id + '/watch', {
     Authorization: `Token token=${store.user.token}`,
-    timeout: 120
+    timeout: 30
   })
 
   gameWatcher.on('change', function (data) {
@@ -26,10 +27,9 @@ const makeWatcher = () => {
 
         return { index: -1, value: '' }
       }
-
       const cell = diff(data.game.cells)
-      $('#watch-index').val(cell.index)
-      $('#watch-value').val(cell.value)
+      store.game.cells[cell.index] = cell.value
+      ui.updateBoard()
     } else if (data.timeout) { // not an error
       gameWatcher.close()
     }

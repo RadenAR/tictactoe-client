@@ -117,7 +117,7 @@ const onJoinGameSuccess = response => {
   $('#message').removeClass('failure')
   $('#message').addClass('success')
 
-  $('#join-game').on('submit', watch.makeWatcher)
+  watch.makeWatcher()
 }
 
 const onJoinGameFailure = response => {
