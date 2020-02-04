@@ -19,6 +19,7 @@ const onSignUpSuccess = response => {
 
 const onSignUpFailure = response => {
   $('#message').text('Sign up failed')
+  $('#sign-up').trigger('reset')
 
   $('#message').removeClass('success')
   $('#message').addClass('failure')
@@ -46,6 +47,7 @@ const onSignInSuccess = response => {
 
 const onSignInFailure = response => {
   $('#message').text('Sign in failed')
+  $('#sign-in').trigger('reset')
 
   $('#message').removeClass('success')
   $('#message').addClass('failure')
