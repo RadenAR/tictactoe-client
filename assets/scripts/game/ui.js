@@ -2,7 +2,6 @@
 
 const store = require('../store')
 const api = require('./api')
-const events = require('./events')
 
 const updateBoard = () => {
   const board = store.game.cells
@@ -85,7 +84,6 @@ const ai = () => {
       } else {
         checkForWin()
       }
-      events.player = 0
       checkForWin()
     })
 }
@@ -110,7 +108,7 @@ const onUpdateGameSuccess = response => {
   } else {
     checkForWin()
   }
-  if (store.game.over === false) {
+  if (store.game.over === false && $('#ai-on').val() === 'true') {
     ai()
   }
 }
@@ -126,9 +124,18 @@ const onNumberGameSuccess = response => {
   $('#game').text(response.games.length)
 }
 
+const changeAi = () => {
+  if ($('#ai-status').text() === 'AI Off' && $('#message2').text() === `X's Turn`) {
+    $('#ai-status').text('AI On')
+  } else {
+    $('#ai-status').text('AI Off')
+  }
+}
+
 module.exports = {
   onNewGameSuccess,
   onNewGameFailure,
   onUpdateGameSuccess,
-  onUpdateGameFailure
+  onUpdateGameFailure,
+  changeAi
 }

@@ -2,12 +2,21 @@ const ui = require('./ui')
 const api = require('./api')
 const store = require('../store')
 
-let player = 0
+const turnAi = () => {
+  if ($('#ai-on').val() === 'false' && $('#message2').text() === `X's Turn`) {
+    $('#ai-on').val('true')
+  } else {
+    $('#ai-on').val('false')
+  }
+}
 
+let player = 0
 const addContent = event => {
   if ($(event.target).text() === '' && player === 0 && store.game.over === false) {
     $(event.target).text('x')
-    // player = 1
+    if ($('#ai-on').val() === 'false') {
+      player = 1
+    }
   } else if ($(event.target).text() === '' && player !== 0 && store.game.over === false) {
     $(event.target).text('o')
     player = 0
@@ -27,6 +36,6 @@ const createGame = event => {
 
 module.exports = {
   createGame,
-  addContent,
-  player: player
+  turnAi,
+  addContent
 }
