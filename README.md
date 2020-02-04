@@ -68,5 +68,9 @@ grunt deploy
 ## Unsolved Problems (that will be fixed in the future iterations)
 * Slightly vague to notify when signup was a success or failure + if signin was a failure
 
+## Possible future additions
+* Multiplayer functionality
+* Score vs the ai for the session
+
 ## Author
 * Raden
