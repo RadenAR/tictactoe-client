@@ -71,7 +71,7 @@ const onChangeFailure = () => {
 
 const onSignOutSuccess = () => {
   $('#message').text(`Successfully Signed Out`)
-
+  $('#change-pw').trigger('reset')
   store.user = null
 
   $('#message').removeClass('failure')
